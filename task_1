@@ -1,0 +1,36 @@
+@@ -0,0 +1,35 @@
+import java.util.*;
+
+public class numbergame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+        
+        int lower = 1; 
+        int upper = 100;
+        int numberToGuess = random.nextInt(upper - lower + 1) + lower;
+        
+        int numberOfAttempts = 0;
+        boolean hasGuessedCorrectly = false;
+        
+        System.out.println("WELCOME TO THE NUMBER GUESSING GAME!");
+        System.out.println("NUMBER SELECTED BETWEEN " + lower + " AND " + upper + ". TRY TO GUESS IT.");
+
+        while (!hasGuessedCorrectly) {
+            System.out.print("ENTER YOUR GUESS: ");
+            int userGuess = sc.nextInt();
+            numberOfAttempts++;
+            
+            if (userGuess<lower||userGuess>upper) {
+                System.out.println("PLEASE GUESS A NUMBER WITHIN VALID RANGE.");
+            } else if (userGuess<numberToGuess) {
+                System.out.println("TOO LOW!...TRY AGAIN.");
+            } else if (userGuess>numberToGuess) {
+                System.out.println("TOO HIGH!...TRY AGAIN.");
+            } else {
+                hasGuessedCorrectly = true;
+                System.out.println("CONGRATULATIONS!...YOU HAVE GUESSED THE RIGHT NUMBER " + numberToGuess + " in " + numberOfAttempts + " attempts.");
+            }
+        }
+    }
+}
